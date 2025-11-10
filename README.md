@@ -86,3 +86,4 @@ This project third level is verified using unit tests. To run the tests:
 	```bash
 	mvn test
 	```
+ [<img width="1170" height="780" alt="image" src="https://github.com/user-attachments/assets/a75c2083-05a5-48c1-8b29-abae530a1274" />](https://images.unsplash.com/photo-1758535557144-c4da07dd5939?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170)
