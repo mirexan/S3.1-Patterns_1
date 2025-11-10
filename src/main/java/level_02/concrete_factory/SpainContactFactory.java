@@ -6,13 +6,13 @@ import level_02.abstract_products.Phone;
 import level_02.concrete_products.SpainAddress;
 import level_02.concrete_products.SpainPhone;
 
-class SpainContactFactory implements ContactFactory {
+public class SpainContactFactory implements ContactFactory {
 	private String street;
 	private String city;
 	private String postal;
 	private String rawNumber;
 
-	public void SpainContactFactory(String street, String city, String postal, String rawNumber){
+	public SpainContactFactory(String street, String city, String postal, String rawNumber){
 		this.street = street;
 		this.city = city;
 		this.postal = postal;
@@ -21,10 +21,10 @@ class SpainContactFactory implements ContactFactory {
 
 	@Override
 	public Phone createPhone(){
-		return new SpainPhone();
+		return new SpainPhone(this.rawNumber);
 	}
 	@Override
 	public Address createAddress(){
-		return new SpainAddress();
+		return new SpainAddress(this.street,this.city,this.postal);
 	}
 }

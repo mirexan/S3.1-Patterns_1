@@ -3,16 +3,21 @@ package level_02.concrete_products;
 import level_02.abstract_products.Phone;
 
 public class UsaPhone implements Phone {
+	private String rawNumber;
+	public UsaPhone(String rawNumber) {
+		this.rawNumber = rawNumber;
+	}
 	@Override
-	public String formatPhoneNumber(String rawNumber) {
+	public String formatPhoneNumber() {
 		String usaNumber = "+1 (";
-		int rawLen = rawNumber.length();
+		int rawLen = this.rawNumber.length();
 		int j = 0;
 		for (int i = 4; i < 17; i++) {
 			if (i == 7) {
 				usaNumber += ')';
-			}
-			else if (i == 8) {
+			} else if (i == 4) {
+				usaNumber += '0';
+			} else if (i == 8) {
 				usaNumber += ' ';
 			}
 			else if (i == 12) {
@@ -24,7 +29,7 @@ public class UsaPhone implements Phone {
 				}
 				if (j < rawLen) {
 
-					usaNumber += rawNumber.charAt(j);
+					usaNumber += this.rawNumber.charAt(j);
 					j++;
 				}
 			}
