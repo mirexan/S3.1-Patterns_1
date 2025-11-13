@@ -9,24 +9,13 @@ public class SpainPhone implements Phone {
 	}
 	@Override
 	public String formatPhoneNumber() {
-		String spanishNumber = "+34 ";
-		int rawLen = this.rawNumber.length();
-		int j = 0;
-		for (int i = 4; i < 16; i++) {
-			if (i == 4 && (rawLen + 4) > 11) {
-				spanishNumber += '6';
-				j++;
-			} else if (i == 7 || i == 10 || i == 13) {
-				spanishNumber += ' ';
-			} else {
-				if (j < rawLen) {
-					spanishNumber += this.rawNumber.charAt(j);
-					j++;
-				} else {
-					j = 0;
-				}
-			}
-		}
-		return spanishNumber;
+		if (this.rawNumber == null || this.rawNumber.length() != 9)
+			return "invalid number";
+		String firstGroup = this.rawNumber.substring(0, 3);
+		String secondGroup = this.rawNumber.substring(3, 5);
+		String thirdGroup = this.rawNumber.substring(5, 7);
+		String fourthGroup = this.rawNumber.substring(7, 9);
+		firstGroup = "6" + firstGroup.substring(1);
+		return String.format("+34 %s %s %s %s", firstGroup, secondGroup, thirdGroup, fourthGroup);
 	}
 }

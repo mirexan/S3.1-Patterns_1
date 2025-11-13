@@ -9,32 +9,12 @@ public class UsaPhone implements Phone {
 	}
 	@Override
 	public String formatPhoneNumber() {
-		String usaNumber = "+1 (";
-		int rawLen = this.rawNumber.length();
-		int j = 0;
-		for (int i = 4; i < 17; i++) {
-			if (i == 7) {
-				usaNumber += ')';
-			} else if (i == 4) {
-				usaNumber += '0';
-			} else if (i == 8) {
-				usaNumber += ' ';
-			}
-			else if (i == 12) {
-				usaNumber += '-';
-			}
-			else {
-				if (j >= rawLen){
-					j = 0;
-				}
-				if (j < rawLen) {
-
-					usaNumber += this.rawNumber.charAt(j);
-					j++;
-				}
-			}
-		}
-		return usaNumber;
+		if (this.rawNumber == null || this.rawNumber.length() != 9)
+			return "invalid number";
+		String areaCode = this.rawNumber.substring(0,2);
+		String prefix = this.rawNumber.substring(2,5);
+		String code = this.rawNumber.substring(5,9);
+		return String.format("+1 (0%s) %s %s", areaCode,prefix,code);
 	}
 
 }
